@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 setup(name='cmnLib',
-      version='1.0.1',
+      version='1.0.2',
       description='The cmnLib - is all of my personal python shell libraries for pypi later for dissection',
       url='https://bitbucket.org/guengn/cmnLib/src',
       author='Guyen Gankhuyag',
