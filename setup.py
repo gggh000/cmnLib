@@ -12,6 +12,6 @@ setup(name='cmnLib',
       author_email='guyen800@protonmail.com',
       license='MIT',
       packages=['cmnLib'],
-      install_requires=['markdown',],      
+      install_requires=['pexpect', 'pycrypto'],
       zip_safe=False)
 
