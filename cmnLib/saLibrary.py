@@ -3164,10 +3164,13 @@ def telnetLogin(pIp, pPort, pUserName=None, pPw=None, pTimeOut=30):
 #   - new handle to ssh of reconnect is successful.
 #   EXIT_ERR if reconnection is failed.
 
-def sshReConnect(pSsh, pIp, pUser = "admin", pPw = "Nbv12345", pTimeOut = 30):
+def sshReConnect(pSsh, pIp, pUser = "admin", pPw = None, pTimeOut = 30):
     debug = 0
     debugL2 = 0
     lSshNew = None
+
+    if pPw == None:
+        getPw("LIN_PW_DEFAULT")
 
     lSshNew = sshLoginLinux(lSshNew, pIp, pUser, pPw)
 
@@ -3206,10 +3209,10 @@ def sshLoginOob(pBmcSsh, pRetry = 20):
 
     if linuxUser == None:
         linuxUser = 'root'
-    
-    if linuxPw == None:
-        linuxPw = 'nbv12345'
 
+    if linuxPw == None:
+        linuxPw = getPw("LIN_PW_DEFAULT")
+    
     if pRetry == None:
         pRetry = 20
 

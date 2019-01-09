@@ -171,7 +171,11 @@ def swimsCreateTicket(pBlade, pProductCode):
 # allowed password types:
 #   - CEC for RH1 login
 # 
-# pPwType    - type of password to be fetched
+#   input:
+#   pPwType     - type of password to be fetched
+#   return:
+#   EXIT_ERR    - on any condition.
+#   pwUnEnc     - unencrypted password that is either created or read from encrypted state.
 
 def getPw(pPwType=None):
     debug = 0
@@ -329,7 +333,7 @@ def printUnEncPw(pPwUnEnc):
     print "Printing partial password info",
 
     if len(pPwUnEnc) >= 6:
-        printDbg ("You unecnrypted password is : **** " + pPwUnEnc[:-4])
+        printDbg ("You unencrypted password is : **** " + pPwUnEnc[:-4])
     else:
         printDbg ("Error: can not print any part of password, it is too short")
 
