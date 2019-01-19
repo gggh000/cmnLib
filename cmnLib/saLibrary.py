@@ -353,6 +353,35 @@ class clsGlobalConfig:
     clsPid = None
     clsConfigFile = None
 
+#   Checks function arguments.
+#   Outputs attention style message where the output is enclosed in double hashed space.
+#   input:
+#   - clientFcn - client function whose arguments will be checked.
+#   return:
+#   - wrapper function object back to caller 
+
+def argChecker(clientFunc):
+
+    # define wrapper function inside which introduces iterating over arguments (variable)
+    # and prints the argument if it has value and None! if it doesn't"
+    # After that client function is called.
+
+    def wrapper(*params):
+        counter = 0
+        debug = 0
+
+        for i in params:
+            if i == None:
+                printWarn("param" + str(counter) + " is None!")
+            else:
+                printDbg("param" + str(counter) + " is OK: " + str(i))
+
+            counter += 1            
+        time.sleep(1)
+        clientFunc(*params)
+
+    return wrapper
+
 #   Prepares, processes command line arguments.
 #   The pSysArgv is the all values of sys.argv as it is. This is what the
 #   users of particular enters in the command line.
