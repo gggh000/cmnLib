@@ -2681,7 +2681,8 @@ def printVars(pVarArray, pDebug = 1, pOnePerLine = 1):
 #   input:  
 #   - debug - if set, display the debug output otherwise suppress.
 #   return: 
-#   - None.
+#   - variable name as string if successful.
+#   - EXIT_ERR on any failure.
 
 def printVar(pVar, pDebug = 1, pToFile = 1):
     debugL2 = 0
@@ -2738,6 +2739,8 @@ def printVar(pVar, pDebug = 1, pToFile = 1):
                 except IndexError:
 #                   printDbg(str(i) + ". " + str(j) + ": IndexError.")
                     i = i
+
+    return lVarName
 
 #   This is similar to printToFile except it appends - info: phrase to front of string and 
 #   caller's modules and file name at the back of string..
